@@ -17,7 +17,6 @@ function App() {
   ];
 
   const [input, setInput] = useState("");
-  const [result, setResult] = useState(null);
 
   const handleNumberClick = (e) => {
     setInput(input + e.target.value);
@@ -57,15 +56,13 @@ function App() {
   };
 
   const solveEquation = () => {
-    setResult(eval(input));
+    setInput(eval(input));
   };
-
-  console.log(result);
 
   return (
     <div className="App">
       <div>
-        <h2 className="number__screen">{result ? result : input}</h2>
+        <h2 className="number__screen">{input}</h2>
         <div className="buttons">
           <div className="numbers">
             {multiKeyArr.map((key_arr, i) => (
