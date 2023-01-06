@@ -26,3 +26,4 @@ class Config2 {
 const instance = new Config2();
 Object.freeze(instance);
 instance.name = "neil"; //you cannot mutate the class because it has been freezed
+console.log(instance);

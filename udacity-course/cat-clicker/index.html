@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Pattern</title>
+  </head>
+  <style>
+    body {
+      margin-top: 5rem;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+    }
+    h2 {
+      z-index: 1;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div class="container" id="catButtons"></div>
+    <div class="container cat-container"></div>
+    <h2>Clicks: <span id="numberOfClicks">0 </span></h2>
+  </body>
+
+  <script>
+    let catButtons = document.querySelector("#catButtons");
+    let catContainer = document.querySelector(".cat-container");
+
+    const catNames = ["Snow", "Kiat Kiat", "Maliksi", "Poncan", "Simba"];
+    const imageSrcs = [
+      "./images/cat.jfif",
+      "./images/cat2.jpg",
+      "./images/cat3.jpg",
+      "./images/cat4.jpg",
+      "./images/cat5.jpg",
+    ];
+
+    catNames.forEach((catName, i) => {
+      let catButton = document.createElement("button");
+      catButton.textContent = catName;
+      catButtons.appendChild(catButton);
+
+      catButton.addEventListener("click", () => {
+        let image = imageSrcs[i];
+        deleteExistingElement(".wrapper");
+        createWrappper(catName);
+        showCatImage(image);
+      });
+    });
+
+    function createWrappper(cat) {
+      let wrapper = document.createElement("div");
+      let catName = document.createElement("h2");
+      wrapper.setAttribute("class", "wrapper");
+      catName.textContent = cat;
+      wrapper.appendChild(catName);
+      catContainer.appendChild(wrapper);
+    }
+
+    function showCatImage(catImage) {
+      let existingWrapper = document.querySelector(".wrapper");
+      let image = document.createElement("img");
+      image.src = catImage;
+      existingWrapper.appendChild(image);
+      image.addEventListener("click", clickToIncrement);
+    }
+
+    function deleteExistingElement(element) {
+      let existingWrapper = document.querySelector(element);
+      if (existingWrapper) {
+        catContainer.removeChild(existingWrapper);
+      }
+    }
+
+    let numOfClicks = document.querySelector("#numberOfClicks");
+    let click = 1;
+    function clickToIncrement() {
+      numOfClicks.innerHTML = click++;
+    }
+  </script>
+</html>
