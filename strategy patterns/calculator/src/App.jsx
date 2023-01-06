@@ -23,7 +23,6 @@ function App() {
 
     if (e.target.value.localeCompare("C") === 0) {
       setInput("");
-      setResult(null);
     }
   };
 
