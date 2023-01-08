@@ -4,7 +4,9 @@ class Car {
     this.name = "Car";
     this.wheels = 4;
   }
-  turnOn = () => console.log("Chacabúm!!");
+  turnOn = () => {
+    return "Chabummmm";
+  };
 }
 
 class Truck {
@@ -12,7 +14,9 @@ class Truck {
     this.name = "Truck";
     this.wheels = 8;
   }
-  turnOn = () => console.log("RRRRRRRRUUUUUUUUUMMMMMMMMMM!!");
+  turnOn = () => {
+    return "RRRRRRRRUUUUUUUUUMMMMMMMMMM!!";
+  };
 }
 
 class Motorcycle {
@@ -20,7 +24,9 @@ class Motorcycle {
     this.name = "Motorcycle";
     this.wheels = 2;
   }
-  turnOn = () => console.log("sssssssssssssssssssssssssssssshhhhhhhhhhham!!");
+  turnOn = () => {
+    return "sssssssssssssssssssssssssssssshhhhhhhhhhham!!";
+  };
 }
 
 // And and abstract factory that works as a single point of interaction for our clients
@@ -45,4 +51,6 @@ const truck = vehicleFactory.createVehicle("truck"); // Truck { turnOn: [Functio
 const motorcycle = vehicleFactory.createVehicle("motorcycle"); // Motorcycle { turnOn: [Function: turnOn], name: 'Motorcycle', wheels: 2 }
 const honda = vehicleFactory.createVehicle("car");
 
-console.log(honda);
+console.log(honda.turnOn());
+console.log(motorcycle.turnOn());
+console.log(truck.turnOn());
